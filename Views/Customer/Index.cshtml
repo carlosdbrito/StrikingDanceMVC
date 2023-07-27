@@ -1,0 +1,31 @@
+﻿@model System.Data.DataTable
+@{
+    ViewData["Title"] = "Index";    
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Nascimento</th>
+        <th>DataInclusão</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+        @for (int i = 0; i < Model.Rows.Count ; i++)
+        {
+        <tr>
+            <td>@Model.Rows[i][0].ToString()</td>
+            <td>@Model.Rows[i][1].ToString()</td>
+            <td>@Model.Rows[i][2].ToString()</td>
+            <td>@Model.Rows[i][3].ToString()</td>
+            <td>@Model.Rows[i][4].ToString()</td>
+            <td><a href="@Url.Action("Edit", "Customer", new { @id=Model.Rows[i][0]})">Edit</a></td>
+            <td><a href="@Url.Action("Delete", "Customer", new { @id=Model.Rows[i][0]})">Delete</a></td>
+
+        </tr>
+        }
+</table>
+<a href="@Url.Action("Create","Customer")">Adicionar Cliente</a>  
